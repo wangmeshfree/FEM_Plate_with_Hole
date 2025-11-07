@@ -2,18 +2,6 @@
 
 A comprehensive Python implementation of finite element method (FEM) analysis for studying stress distribution in a plate with a circular hole under tensile loading. This project includes mesh convergence studies and comparison with analytical solutions.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Theory](#theory)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results](#results)
-- [Project Structure](#project-structure)
-- [Mathematical Background](#mathematical-background)
-- [License](#license)
 
 ## 🎯 Overview
 
@@ -121,7 +109,7 @@ FEM_hole_plate/
 
 The weak form of the equilibrium equation:
 
-$$\int_\Omega \delta\varepsilon^T \sigma \, d\Omega = \int_{\Gamma_t} \delta u^T t \, d\Gamma$$
+$$\int_\Omega \delta\varepsilon^T \sigma \, d\Omega = \int_{\Omega} \delta u^T b \, d\Omega + \int_{\Gamma_t} \delta u^T t \, d\Gamma$$
 
 Where:
 - **ε**: Strain tensor
