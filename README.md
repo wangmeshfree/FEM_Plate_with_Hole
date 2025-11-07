@@ -109,7 +109,7 @@ FEM_hole_plate/
 
 The weak form of the equilibrium equation:
 
-$$\int_\Omega \delta\varepsilon^T \sigma \, d\Omega = \int_{\Omega} \delta u^T b \, d\Omega + \int_{\Gamma_t} \delta u^T t \, d\Gamma$$
+$$\int_\Omega \delta\varepsilon^T \sigma \ d\Omega = \int_{\Omega} \delta u^T b \ d\Omega + \int_{\Gamma_t} \delta u^T t \ d\Gamma$$
 
 Where:
 - **ε**: Strain tensor
