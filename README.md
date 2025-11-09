@@ -3,7 +3,7 @@
 A comprehensive Python implementation of finite element method (FEM) analysis for studying stress distribution in a plate with a circular hole under tensile loading. This project includes mesh convergence studies and comparison with analytical solutions.
 
 
-## 🎯 Overview
+## Overview
 
 This project implements a 2D finite element solver for the classical problem of a plate with a circular hole subjected to uniaxial tension. The solution demonstrates:
 
@@ -12,16 +12,14 @@ This project implements a 2D finite element solver for the classical problem of 
 - **Energy norm error** calculation by comparing with analytical solutions
 - **Mesh refinement studies** to validate numerical accuracy
 
-## ✨ Features
+## Features
 
-- ✅ **Q4 Element Implementation**: Four-node isoparametric quadrilateral elements
-- ✅ **Analytical Solution**: Closed-form stress solution in polar coordinates
+- ✅ **Q4 Element**: Four-node isoparametric quadrilateral elements
 - ✅ **Plane Strain Formulation**: Material stiffness matrix for plane strain problems
 - ✅ **Gauss Integration**: 2×2 Gauss quadrature for element stiffness matrices
 - ✅ **Energy Norm Error**: Rigorous error estimation compared to exact solution
 - ✅ **Convergence Analysis**: Mesh refinement studies with convergence rate calculation
 - ✅ **Visualization**: Mesh plots and stress contour visualizations
-- ✅ **Jupyter Notebook**: Interactive analysis and documentation
 
 ## 📐 Theory
 
@@ -46,13 +44,6 @@ $$\sigma_{\theta\theta} = \frac{T_x}{2}\left(1 + \frac{R^2}{r^2}\right) - \frac{
 $$\sigma_{r\theta} = -\frac{T_x}{2}\left(1 + 2\frac{R^2}{r^2} - 3\frac{R^4}{r^4}\right)\sin(2\theta)$$
 
 At the hole boundary (r = R, θ = π/2), the maximum stress concentration factor is **3.0**.
-
-## 🛠️ Requirements
-
-- Python 3.7+
-- NumPy
-- Matplotlib
-- Jupyter Notebook (optional, for interactive use)
 
 
 ### Customization
@@ -87,21 +78,13 @@ The implementation demonstrates **first-order convergence on the energy error no
 ### Stress Distribution
 
 The analysis produces three stress component contours:
-- **σ₁₁**: Normal stress in x-direction
-- **σ₂₂**: Normal stress in y-direction  
-- **σ₁₂**: Shear stress
+- ** $$\sigma_{11}$$**: Normal stress in x-direction
+- ** $$\sigma_{22}$$**: Normal stress in y-direction  
+- ** $$\sigma_{12}$$**: Shear stress
 
 Maximum stress occurs at the hole boundary, confirming the theoretical stress concentration factor of 3.0.
 
-## 📁 Project Structure
 
-```
-FEM_hole_plate/
-│
-├── main.ipynb                 # Jupyter notebook version
-├── README.md                  # This file
-
-```
 
 ## 📚 Mathematical Background
 
@@ -131,14 +114,6 @@ Where:
 
 $$\|e\|_E = \sqrt{\int_\Omega (\varepsilon_{FEM} - \varepsilon_{exact})^T D (\varepsilon_{FEM} - \varepsilon_{exact}) \, d\Omega}$$
 
-## 🎓 Educational Value
-
-This project is ideal for:
-- Learning finite element method fundamentals
-- Understanding mesh convergence and error analysis
-- Studying stress concentration phenomena
-- Implementing Gauss quadrature integration
-- Comparing numerical and analytical solutions
 
 ## 📖 References
 
@@ -146,10 +121,6 @@ This project is ideal for:
 2. **Hughes, T. J. R.** (2000). "The Finite Element Method: Linear Static and Dynamic Finite Element Analysis"
 3. **Zienkiewicz, O. C., & Taylor, R. L.** (2000). "The Finite Element Method"
 
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
