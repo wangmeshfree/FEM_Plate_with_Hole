@@ -35,6 +35,6 @@ Open the notebooks in VS Code or Jupyter for the guided derivations, intermediat
 
 ## Author
 
-Jiarui Wang
+Jiarui Wang, Zihan Wang
 
 Copyright (c) 2026.
