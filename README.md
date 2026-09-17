@@ -4,11 +4,12 @@ This repository contains finite element method examples for MAE 5036. The runnab
 
 ## Repository Structure
 
-| Path | Purpose |
-| --- | --- | --- |
+
 | [src/FEM1D_linear_bar](src/FEM1D_linear_bar) | Runnable 1D linear-bar FEM program. See its [local guide](src/FEM1D_linear_bar/README.md). |
-| [src/FEM1D_linear_bar.ipynb](src/FEM1D_linear_bar.ipynb) | Classroom notebook for the 1D bar example. |
-| [src/FEM2D_linear_plate_with_hole.ipynb](src/FEM2D_linear_plate_with_hole.ipynb) | Classroom notebook for the plate-with-hole example. |
+
+| [src/FEM1D_linear_bar.ipynb](FEM1D_linear_bar.ipynb) | Classroom notebook for the 1D bar example. |
+
+| [src/FEM2D_linear_plate_with_hole.ipynb](FEM2D_linear_plate_with_hole.ipynb) | Classroom notebook for the plate-with-hole example. |
 
 ## Requirements
 
