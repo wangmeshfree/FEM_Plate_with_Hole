@@ -4,12 +4,11 @@ This repository contains finite element method examples for MAE 5036. The runnab
 
 ## Repository Structure
 
-
 | [src/FEM1D_linear_bar](src/FEM1D_linear_bar) | Runnable 1D linear-bar FEM program. See its [local guide](src/FEM1D_linear_bar/README.md). |
 
-| [src/FEM1D_linear_bar.ipynb](FEM1D_linear_bar.ipynb) | Classroom notebook for the 1D bar example. |
+| [FEM1D_linear_bar.ipynb](FEM1D_linear_bar.ipynb) | This is a classroom notebook for the 1D bar example. |
 
-| [src/FEM2D_linear_plate_with_hole.ipynb](FEM2D_linear_plate_with_hole.ipynb) | Classroom notebook for the plate-with-hole example. |
+| [FEM2D_linear_plate_with_hole.ipynb](FEM2D_linear_plate_with_hole.ipynb) | This is a classroom notebook for the 2D plate with hole problem demonstration. |
 
 ## Requirements
 
@@ -20,6 +19,7 @@ This repository contains finite element method examples for MAE 5036. The runnab
 ```sh
 python -m pip install numpy matplotlib
 ```
+
 
 Students are encouraged to install Python and learn to use it independently. You may use a different programming language for your work, provided you can implement and explain your solution.
 
