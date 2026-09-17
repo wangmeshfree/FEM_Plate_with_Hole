@@ -1,130 +1,77 @@
-# Finite Element Analysis - Plate with Circular Hole under Tension
+# MAE 5036: 1D Bar Finite Element Analysis
 
-A comprehensive Python implementation of finite element method (FEM) analysis for studying stress distribution in a plate with a circular hole under tensile loading. This project includes mesh convergence studies and comparison with analytical solutions.
+Teaching material for MAE 5036, Advanced Computational Solid Mechanics II. This example solves the axial response of a linearly elastic bar using two-node linear finite elements and Gauss integration.
 
+## Problem
 
-## Overview
+The bar has length $L=10$, Young's modulus $E=100$, cross-sectional area $A=1$, a distributed axial load $q(x)=x^2$, and an end force $P=5$.
 
-This project implements a 2D finite element solver for the classical problem of a plate with a circular hole subjected to uniaxial tension. The solution demonstrates:
+$$
+\frac{d}{dx}\left(EA\frac{du}{dx}\right) + x^2 = 0,
+\qquad u(0)=0,
+\qquad EAu_{,x}(L)=P.
+$$
 
-- **Stress concentration** around the circular hole
-- **Convergence characteristics** of Q4 (4-node quadrilateral) elements
-- **Energy norm error** calculation by comparing with analytical solutions
-- **Mesh refinement studies** to validate numerical accuracy
+The code computes the nodal displacements, axial stress, and the support reaction. It also compares the FEM result with the analytical solution:
 
-## Features
+$$
+u(x) = \frac{\left(P + L^3/3\right)x - x^4/12}{EA}.
+$$
 
-- ✅ **Q4 Element**: Four-node isoparametric quadrilateral elements
-- ✅ **Plane Strain Formulation**: Material stiffness matrix for plane strain problems
-- ✅ **Gauss Integration**: 2×2 Gauss quadrature for element stiffness matrices
-- ✅ **Energy Norm Error**: Rigorous error estimation compared to exact solution
-- ✅ **Convergence Analysis**: Mesh refinement studies with convergence rate calculation
-- ✅ **Visualization**: Mesh plots and stress contour visualizations
+## Files
 
-## 📐 Theory
+| Path | Purpose |
+| --- | --- |
+| [src/FEM1D_linear_bar/main.py](src/FEM1D_linear_bar/main.py) | Runs the 1D bar analysis and saves results. |
+| [src/FEM1D_linear_bar/fem1d_lib.py](src/FEM1D_linear_bar/fem1d_lib.py) | Reusable FEM functions: mesh generation, element integration, assembly, boundary conditions, and plotting. |
+| [src/FEM1D_linear_bar.ipynb](src/FEM1D_linear_bar.ipynb) | Step-by-step notebook version, including a mesh-convergence study. |
 
-### Problem Setup
+## Requirements
 
-A square plate with a circular hole at the center is subjected to uniform tensile stress. Due to symmetry, only one quarter of the plate is modeled:
+- Python 3
+- NumPy
+- Matplotlib
 
-- **Elastic Modulus (E)**: 1000
-- **Poisson's Ratio (ν)**: 0.30
-- **Hole Radius (R)**: 1.0
-- **Plate Size (L)**: 5.0
-- **Applied Stress (Tx)**: 1.0
+Install the Python packages with:
 
-### Analytical Solution
-
-The exact stress field in polar coordinates is given by:
-
-$$\sigma_{rr} = \frac{T_x}{2}\left(1 - \frac{R^2}{r^2}\right) + \frac{T_x}{2}\left(1 - 4\frac{R^2}{r^2} + 3\frac{R^4}{r^4}\right)\cos(2\theta)$$
-
-$$\sigma_{\theta\theta} = \frac{T_x}{2}\left(1 + \frac{R^2}{r^2}\right) - \frac{T_x}{2}\left(1 + 3\frac{R^4}{r^4}\right)\cos(2\theta)$$
-
-$$\sigma_{r\theta} = -\frac{T_x}{2}\left(1 + 2\frac{R^2}{r^2} - 3\frac{R^4}{r^4}\right)\sin(2\theta)$$
-
-At the hole boundary (r = R, θ = π/2), the maximum stress concentration factor is **3.0**.
-
-
-### Customization
-
-You can modify key parameters in the code:
-
-```python
-# Material properties
-E = 1.0e3      # Elastic modulus
-nu = 0.30      # Poisson's ratio
-
-# Geometry
-R = 1.0        # Hole radius
-L = 5.0        # Plate size
-
-# Mesh refinement levels
-refinements = [10, 15, 20]  # Number of elements in one direction
+```sh
+python -m pip install numpy matplotlib
 ```
 
-## 📊 Results
+## Run the Example
 
-### Mesh Convergence
+From the repository root, run:
 
-The implementation demonstrates **first-order convergence on the energy error norm** (O(h)) for Q4 elements:
+```sh
+.venv/bin/python src/FEM1D_linear_bar/main.py
+```
 
-| Mesh Size (h) | Energy Norm Error | Convergence Rate |
-|---------------|-------------------|------------------|
-| 0.4000        | ~0.XXX           | -                |
-| 0.2667        | ~0.XXX           | ~1.0             |
-| 0.2000        | ~0.XXX           | ~1.0             |
+To work through the calculations interactively, open [src/FEM1D_linear_bar.ipynb](src/FEM1D_linear_bar.ipynb) in VS Code or Jupyter and run its cells in order.
 
-### Stress Distribution
+## Results
 
-The analysis produces three stress component contours:
-- ** $$\sigma_{11}$$**: Normal stress in x-direction
-- ** $$\sigma_{22}$$**: Normal stress in y-direction  
-- ** $$\sigma_{12}$$**: Shear stress
+For `number_element_in_one_direction = 2`, the script creates:
 
-Maximum stress occurs at the hole boundary, confirming the theoretical stress concentration factor of 3.0.
+```text
+src/FEM1D_linear_bar/Results_1d_bar_2_elements/
+├── nodal_displacements.txt
+├── displacement.png
+└── stress.png
+```
 
+The output folder name updates automatically when the number of elements changes. The displacement file contains the nodal coordinate and FEM displacement in two columns.
 
+## Learning Objectives
 
-## 📚 Mathematical Background
+- Construct a uniform 1D finite-element mesh and element connectivity.
+- Evaluate linear shape functions and their derivatives.
+- Assemble the global stiffness matrix and equivalent nodal load vector.
+- Apply essential and traction boundary conditions.
+- Solve for nodal displacements and postprocess axial stress.
+- Compare FEM results with the analytical solution.
 
-### Finite Element Formulation
+## Author
 
-The weak form of the equilibrium equation:
+Jiarui Wang
 
-$$\int_\Omega \delta\varepsilon^T \sigma \ d\Omega = \int_{\Omega} \delta u^T b \ d\Omega + \int_{\Gamma_t} \delta u^T t \ d\Gamma$$
-
-Where:
-- **ε**: Strain tensor
-- **σ**: Stress tensor
-- **t**: Traction vector
-- **Ω**: Domain
-- **Γₜ**: Traction boundary
-
-### Element Stiffness Matrix
-
-$$K_e = \int_{\Omega_e} B^T D B \, d\Omega$$
-
-Where:
-- **B**: Strain-displacement matrix
-- **D**: Material stiffness matrix (plane strain)
-- **Ωₑ**: Element domain
-
-### Energy Norm Error
-
-$$\|e\|_E = \sqrt{\int_\Omega (\varepsilon_{FEM} - \varepsilon_{exact})^T D (\varepsilon_{FEM} - \varepsilon_{exact}) \, d\Omega}$$
-
-
-## 📖 References
-
-1. **Timoshenko, S. P., & Goodier, J. N.** (1970). "Theory of Elasticity"
-2. **Hughes, T. J. R.** (2000). "The Finite Element Method: Linear Static and Dynamic Finite Element Analysis"
-3. **Zienkiewicz, O. C., & Taylor, R. L.** (2000). "The Finite Element Method"
-
-
-## 👤 Author
-
-Jiarui Wang & Huanyang Hou @ Southern University of Science and Technology- [@wangmeshfree](https://github.com/wangmeshfree)
-
-
-**Note**: This is an educational implementation. For production finite element analysis, consider using established libraries like FEniCS, deal.II, or commercial software.
+Copyright (c) 2026.
