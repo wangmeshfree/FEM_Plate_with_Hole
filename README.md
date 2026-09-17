@@ -27,9 +27,9 @@ The program creates a mesh-specific results folder under `src/FEM1D_linear_bar` 
 
 Open the notebooks in VS Code or Jupyter for the guided derivations, intermediate FEM calculations, plots, and convergence study used during class instruction.
 
-[notebooks/FEM1D_linear_bar.ipynb](FEM1D_linear_bar.ipynb) | This is a classroom notebook for the 1D bar example. 
+[FEM1D_linear_bar.ipynb](notebooks/FEM1D_linear_bar.ipynb) | This is a classroom notebook for the 1D bar example. 
 
-[notebooks/FEM2D_linear_plate_with_hole.ipynb](FEM2D_linear_plate_with_hole.ipynb) | This is a classroom notebook for the 2D plate with hole problem demonstration. 
+[FEM2D_linear_plate_with_hole.ipynb](notebooks/FEM2D_linear_plate_with_hole.ipynb) | This is a classroom notebook for the 2D plate with hole problem demonstration. 
 
 
 
